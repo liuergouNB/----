@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>像素格斗 · 试作版</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="top-bar">
+      <h1>PIXEL FIGHT</h1>
+      <p class="subtitle">像素平面格斗 · 死神火影同款味（试作）</p>
+    </header>
+
+    <!-- 主菜单 -->
+    <section id="menu" class="panel">
+      <button class="btn primary" data-action="pvp">双人对战</button>
+      <button class="btn primary" data-action="pve">挑战 AI</button>
+      <button class="btn" data-action="keys">键位设置</button>
+      <button class="btn" data-action="settings">游戏设置</button>
+      <p class="hint">大地图镜头跟随。G 二段跳 · H 可空中冲刺。站立拳踢劈 / W升龙 / S贴地扫 / 空中回旋俯冲。</p>
+    </section>
+
+    <!-- 键位设置 -->
+    <section id="keys" class="panel hidden">
+      <h2>键位设置</h2>
+      <div class="key-columns">
+        <div class="key-col" id="keys-p1"></div>
+        <div class="key-col" id="keys-p2"></div>
+      </div>
+      <div class="row">
+        <button class="btn" data-action="reset-keys">恢复默认</button>
+        <button class="btn primary" data-action="back-menu">返回菜单</button>
+      </div>
+      <p class="hint" id="key-hint">点击某个动作旁的按钮，再按下你想绑定的键。</p>
+    </section>
+
+    <!-- 游戏设置 -->
+    <section id="settings" class="panel hidden">
+      <h2>游戏设置</h2>
+      <div class="settings-form" id="settings-form"></div>
+      <div class="row">
+        <button class="btn" data-action="reset-settings">恢复默认</button>
+        <button class="btn primary" data-action="save-settings">保存并返回</button>
+      </div>
+      <p class="hint" id="settings-hint">修改后点保存，下一局对战生效。</p>
+    </section>
+
+    <!-- 游戏画面 -->
+    <section id="game-wrap" class="hidden">
+      <canvas id="game" width="960" height="540"></canvas>
+      <div class="game-hud">
+        <button class="btn small" data-action="pause-menu">返回菜单</button>
+      </div>
+    </section>
+
+    <!-- 结束弹层 -->
+    <div id="overlay" class="overlay hidden">
+      <div class="overlay-card">
+        <h2 id="result-text">对战结束</h2>
+        <button class="btn primary" data-action="rematch">再来一局</button>
+        <button class="btn" data-action="back-menu">回主菜单</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

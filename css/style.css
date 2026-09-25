@@ -1,0 +1,281 @@
+:root {
+  --bg: #140c08;
+  --panel: #241810;
+  --ink: #f4e8c1;
+  --muted: #a89070;
+  --accent: #e8b020;
+  --accent-dark: #a87810;
+  --p1: #e04040;
+  --p2: #3080e0;
+  --line: #000000;
+  --good: #40c040;
+  --panel-border: #e8b020;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Courier New", "Microsoft YaHei", monospace;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -10%, #5a2818 0%, transparent 55%),
+    radial-gradient(ellipse 90% 50% at 80% 100%, #1a2030 0%, transparent 50%),
+    linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+  background-size: auto, auto, 8px 8px, 8px 8px;
+  image-rendering: pixelated;
+}
+
+#app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 12px 36px;
+}
+
+.top-bar {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: clamp(0.85rem, 2.5vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--accent);
+  text-shadow: 3px 3px 0 #000;
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 4px solid var(--panel-border);
+  outline: 2px solid #000;
+  border-radius: 0;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  max-width: 440px;
+  margin: 0 auto;
+  box-shadow: 6px 6px 0 #000;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-shadow: 2px 2px 0 #000;
+}
+
+#keys.panel {
+  max-width: 880px;
+}
+
+.btn {
+  appearance: none;
+  border: 3px solid #000;
+  background: #3a2818;
+  color: var(--ink);
+  border-radius: 0;
+  padding: 12px 14px;
+  font-family: "Courier New", "Microsoft YaHei", monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+  image-rendering: pixelated;
+}
+
+.btn:hover {
+  background: #4a3420;
+  color: #fff;
+}
+
+.btn:active {
+  box-shadow: 1px 1px 0 #000;
+  transform: translate(2px, 2px);
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #1a1008;
+  border-color: #000;
+}
+
+.btn.primary:hover {
+  background: #f0c840;
+  color: #000;
+}
+
+.btn.small {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.btn.listening {
+  background: #184818;
+  color: #80ff80;
+  outline: 2px solid var(--good);
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.key-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 720px) {
+  .key-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.key-col h3 {
+  margin: 0 0 10px;
+  text-align: center;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.65rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.key-col.h-p1 h3 { color: var(--p1); }
+.key-col.h-p2 h3 { color: var(--p2); }
+
+.key-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.key-row span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+#game-wrap {
+  position: relative;
+}
+
+#game {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  margin: 0 auto;
+  background: #000;
+  border: 4px solid var(--accent);
+  outline: 2px solid #000;
+  border-radius: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  box-shadow: 8px 8px 0 #000;
+}
+
+.game-hud {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 14, 0.85);
+  display: grid;
+  place-items: center;
+  z-index: 20;
+}
+
+.overlay-card {
+  background: var(--panel);
+  border: 4px solid var(--accent);
+  outline: 2px solid #000;
+  border-radius: 0;
+  padding: 24px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 260px;
+  box-shadow: 8px 8px 0 #000;
+}
+
+.overlay-card h2 {
+  margin: 0 0 8px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--accent);
+  text-shadow: 2px 2px 0 #000;
+}
+
+#settings.panel {
+  max-width: 520px;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.setting-row {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 10px;
+  align-items: center;
+}
+
+.setting-row label {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.setting-row input {
+  width: 100%;
+  border: 3px solid #000;
+  background: #1a1020;
+  color: var(--ink);
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: 0;
+}
